@@ -100,4 +100,12 @@ def mostrar_reporte_paginado(reporte):
 
         print("-" * 42)
 
+def mostrar_calemdario(calendario):
+    "Muestra el calendario en consola, pidiendo ENTER cada cierto numero de eventos"
+
+    if not reporte:
+        print("\n" + "=" * 42)
+        print("CALENDARIO DE LA SEMANA")
+        print("=" * 42) 
+
     print("\nReporte tambien guardado en 'reporte_horario.json'.")
