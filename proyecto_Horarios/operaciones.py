@@ -2,7 +2,7 @@
 # Este archivo contiene la logica de negocio del programa
 
 import json
-from almacenamiento import guardar_datos, guardar_reporte
+from almacenamiento import guardar_datos, guardar_reporte, guardar_calendario 
 
 dias_validos = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]
 
@@ -121,6 +121,33 @@ def eliminar_materia(horarios, estudiante, materia):
     horarios.extend(nuevos_horarios)
     guardar_datos(horarios)
     return True, f"Materia '{materia}' de {estudiante} eliminada correctamente."
+
+
+def generar_calendario(horarios, estudiante=None):
+    "arma el reporte del calendario de la semana"
+
+    if estudiante:
+        eventos = [e for e in horarios if e.get("estudiante", ""). lower() == estudiante.lower()]
+    else:
+        event = horarios
+
+    orden_dias = {dia: i for i, dia in enumerate(dias_validos)}
+    eventos_ordenados = sorted(eventos, key=lambda e: (orden_dias.get(e["dia"], 99), horas_a_minutos(e["hora_inicio"])))
+
+    reporte_por_dia = {}
+    for evento in eventos_ordenados:
+        dia = evento["dia"]
+        reporte_por_dia.setdefault(dia, []).append({
+            "materia": evento["materia"],
+            "hora_inicio": evento["hora_inicio"],
+            "hora_fin": evento["hora_fin"],
+            "ubicacion": evento["ubicacion"]   
+        })
+
+    calendario = [{"dia": dia, "eventos": reporte_por_dia[dia]} for dia in dias_validos if dia in reporte_por_dia]
+
+    guardar_calendario(calendario)
+    return True, "Calendario generado en 'calendario.json'.", calendario
 
 
 def generar_reporte(horarios, estudiante=None):

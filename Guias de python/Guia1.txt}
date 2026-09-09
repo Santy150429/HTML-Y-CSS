@@ -1,0 +1,828 @@
+# =====================================================================
+# GUÍA DEFINITIVA DE PYTHON: DEL MÁS AL MENOS UTILIZADO
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# NIVEL 1: LOS MÁS UTILIZADOS (Estructuras de uso diario)
+# ---------------------------------------------------------------------
+
+# 1. print() - Muestra texto o datos en la consola
+print("--- 1. print() ---")
+print("Hola desde Visual Studio Code")
+
+# 2. True / False - Valores booleanos (Verdadero / Falso)
+print("\n--- 2. True / False ---")
+activo = True
+borrado = False
+if activo:
+  print("El sistema está activo.")
+
+# 3. if / elif / else - Tomas de decisiones condicionales
+print("\n--- 3. if, elif, else ---")
+edad = 18
+if edad >= 18:
+  print("Es mayor de edad.")
+elif edad > 0:
+  print("Es menor de edad.")
+else:
+  print("Edad no válida.")
+
+# 4. for / in - Bucles para recorrer elementos (iterar)
+print("\n--- 4. for / in ---")
+frutas = ["manzana", "pera", "uva"]
+for f in frutas:
+  print("Fruta:", f)
+
+# 5. def / return - Creación de funciones reutilizables
+print("\n--- 5. def / return ---")
+
+
+def sumar(a, b):
+  return a + b
+
+
+print("Suma:", sumar(4, 5))
+
+# 6. while - Bucle que se repite mientras se cumpla una condición
+print("\n--- 6. while ---")
+x = 2
+while x > 0:
+  print("Cuenta:", x)
+  x -= 1
+
+# 7. try / except - Manejo seguro de errores para que el programa no falle
+print("\n--- 7. try / except ---")
+try:
+  res = 5 / 0
+except ZeroDivisionError:
+  print("Error: No se puede dividir entre cero.")
+
+# 8. import - Para cargar librerías o módulos externos
+print("\n--- 8. import ---")
+import math
+
+print("Raíz cuadrada de 25:", math.sqrt(25))
+
+# 9. class - Programación Orientada a Objetos (Creación de moldes/clases)
+print("\n--- 9. class ---")
+
+
+class Persona:
+
+  def _init_(self, nombre):
+    self.nombre = nombre
+
+  def saludar(self):
+    return f"Hola, soy {self.nombre}"
+
+
+p = Persona("Carlos")
+print(p.saludar())
+
+# 10. with / open - Gestión segura de archivos de texto
+print("\n--- 10. with / open ---")
+try:
+  with open("prueba.txt", "w", encoding="utf-8") as archivo:
+    archivo.write("Texto de prueba guardado.")
+  print("Archivo creado con éxito.")
+except Exception as e:
+  print("Ocurrió un error:", e)
+
+
+# ---------------------------------------------------------------------
+# NIVEL 2: MUY COMUNES (Herramientas frecuentes del lenguaje)
+# ---------------------------------------------------------------------
+
+# 11. and, or, not - Operadores lógicos
+print("\n--- 11. and, or, not ---")
+A, B = True, False
+if A and not B:
+  print("Condición lógica cumplida.")
+
+# 12. range() - Genera secuencias numéricas (ideal para bucles)
+print("\n--- 12. range() ---")
+for i in range(3):  # Genera 0, 1, 2
+  print("Número de rango:", i)
+
+# 13. len() - Mide la longitud de listas, textos, diccionarios, etc.
+print("\n--- 13. len() ---")
+texto = "Python"
+print(f"La palabra '{texto}' tiene {len(texto)} letras.")
+
+# 14. lambda - Funciones anónimas rápidas de una sola línea
+print("\n--- 14. lambda ---")
+multiplicar = lambda a, b: a * b
+print("Resultado lambda:", multiplicar(3, 4))
+
+# 15. input() - Permite capturar datos introducidos por el usuario
+# (Comentado para que el script no se detenga esperando interacción)
+# nombre_usuario = input("¿Cómo te llamas?: ")
+
+# 16. type() - Muestra el tipo de dato de una variable
+print("\n--- 16. type() ---")
+print("Tipo de dato de 3.14:", type(3.14))
+
+# 17. int(), float(), str() - Conversiones de tipos de datos
+print("\n--- 17. Conversiones (int, float, str) ---")
+numero_en_texto = "100"
+convertido = int(numero_en_texto) + 50
+print("Suma convertida:", convertido)
+
+
+# ---------------------------------------------------------------------
+# NIVEL 3: INTERMEDIOS (Utilizados en situaciones específicas)
+# ---------------------------------------------------------------------
+
+# 18. break y continue - Control dentro de bucles
+print("\n--- 18. break y continue ---")
+for i in range(5):
+  if i == 2:
+    continue  # Salta el número 2
+  if i == 4:
+    break  # Detiene el bucle por completo al llegar al 4
+  print("Valor i:", i)
+
+# 19. in (como operador de pertenencia)
+print("\n--- 19. in (pertenencia) ---")
+letras = ["a", "b", "c"]
+if "b" in letras:
+  print("Sí, 'b' está en la lista.")
+
+# 20. is (compara si dos variables apuntan al mismo espacio en memoria)
+print("\n--- 20. is ---")
+x = None
+if x is None:
+  print("x es estrictamente None.")
+
+# 21. global - Permite modificar una variable global dentro de una función
+print("\n--- 21. global ---")
+contador_global = 10
+
+
+def modificar_global():
+  global contador_global
+  contador_global = 20
+
+
+modificar_global()
+print("Nuevo valor global:", contador_global)
+
+
+# ---------------------------------------------------------------------
+# NIVEL 4: MENOS UTILIZADOS O AVANZADOS (Casos muy particulares)
+# ---------------------------------------------------------------------
+
+# 22. pass - Instrucción nula que sirve como marcador temporal de código vacío
+print("\n--- 22. pass ---")
+
+
+def funcion_pendiente():
+  pass  # No hace nada, evita errores de sintaxis si está vacía
+
+
+# 23. del - Elimina variables, elementos de listas o atributos de memoria
+print("\n--- 23. del ---")
+variable_temporal = "Me voy a borrar"
+del variable_temporal
+# print(variable_temporal) -> Daría error porque ya no existe
+
+# 24. assert - Comprobación de depuración (lanza error si la condición es falsa)
+print("\n--- 24. assert ---")
+try:
+  assert 2 + 2 == 4  # Si esto fuera falso, detendría el programa con AssertionError
+  print("La aserción fue exitosa.")
+except AssertionError:
+  print("Error de aserción.")
+
+# 25. yield - Convierte una función en un generador eficiente de memoria
+print("\n--- 25. yield ---")
+
+
+def generar_numeros():
+  yield 1
+  yield 2
+  yield 3
+
+
+for num in generar_numeros():
+  print("Número generado:", num)
+
+# 26. async / await - Programación asíncrona (concurrente)
+print("\n--- 26. async / await (referencia teórica) ---")
+# Se usan dentro de funciones asíncronas para tareas que requieren tiempo de espera:
+# async def tarea_web():
+#     await asyncio.sleep(1)
+print(
+    "async y await se usan para operaciones asíncronas (ej. consultas de red)."
+)
+
+# =====================================================================
+# GUÍA PRÁCTICA: CÓMO HACER Y PEDIR JSON EN PYTHON
+# =====================================================================
+
+import json
+import requests  # Asegúrate de instalarlo con: pip install requests
+
+# ---------------------------------------------------------------------
+# PARTE 1: HACER (Crear, convertir y guardar archivos JSON)
+# ---------------------------------------------------------------------
+
+# 1. json.dumps() - Convierte un diccionario/lista de Python a texto JSON
+print("\n--- 1. json.dumps() (Python -> Texto JSON) ---")
+usuario_dict = {"nombre": "Ana", "edad": 25, "hobbies": ["leer", "programar"]}
+texto_json = json.dumps(
+    usuario_dict, ensure_ascii=False, indent=4
+)  # indent=4 para formato bonito
+print("Texto JSON resultante:\n", texto_json)
+
+
+# 2. json.dump() - Crea y guarda un archivo JSON físico en tu computadora
+print("\n--- 2. json.dump() (Guardar archivo JSON local) ---")
+datos_config = {"tema": "oscuro", "notificaciones": True}
+try:
+  with open("configuracion.json", "w", encoding="utf-8") as archivo:
+    json.dump(datos_config, archivo, ensure_ascii=False, indent=4)
+  print("¡Archivo 'configuracion.json' creado y guardado con éxito!")
+except Exception as e:
+  print("Error al guardar el archivo:", e)
+
+
+# ---------------------------------------------------------------------
+# PARTE 2: LEER (Abrir archivos JSON locales)
+# ---------------------------------------------------------------------
+
+# 3. json.load() - Lee un archivo JSON guardado localmente y lo pasa a Python
+print("\n--- 3. json.load() (Leer archivo JSON local) ---")
+try:
+  with open("configuracion.json", "r", encoding="utf-8") as archivo:
+    config_leida = json.load(archivo)
+  print("Datos leídos del archivo:", config_leida)
+  print("Tema actual:", config_leida["tema"])
+except FileNotFoundError:
+  print("El archivo no existe.")
+
+
+# ---------------------------------------------------------------------
+# PARTE 3: PEDIR (Consumir JSON desde internet / APIs)
+# ---------------------------------------------------------------------
+
+# 4. requests.get().json() - Pide y descarga un JSON de una API web
+print("\n--- 4. requests.get() (Pedir JSON de una API) ---")
+url = "https://jsonplaceholder.typicode.com/todos/1"
+
+try:
+  # Hacemos la petición HTTP GET a la URL
+  respuesta = requests.get(url)
+
+  # Verificamos si la petición fue exitosa (Código 200)
+  if respuesta.status_code == 200:
+    # .json() convierte automáticamente la respuesta de la web en un diccionario de Python
+    datos_api = respuesta.json()
+    print("Datos recibidos de la API con éxito:")
+    print("Título de la tarea:", datos_api.get("title"))
+    print("¿Está completada?:", datos_api.get("completed"))
+  else:
+    print(f"Error en la petición web. Código: {respuesta.status_code}")
+
+except requests.exceptions.RequestException as e:
+  print("Error de conexión con la API:", e)
+
+  # =====================================================================
+# GUÍA: CREAR UN ARCHIVO JSON Y LEERLO EN PYTHON
+# =====================================================================
+
+import json
+
+# ---------------------------------------------------------------------
+# PARTE 1: CREAR Y GUARDAR UN ARCHIVO JSON (Escribir)
+# ---------------------------------------------------------------------
+print("\n--- 1. Crear y guardar un archivo JSON ---")
+
+# Definimos una estructura de datos más completa (diccionario con listas)
+inventario_tienda = {
+    "tienda": "TecnoShop",
+    "sucursal": "Centro",
+    "abierto": True,
+    "productos": [
+        {"id": 1, "nombre": "Laptop Gamer", "precio": 1200.50, "stock": 5},
+        {"id": 2, "nombre": "Mouse Inalámbrico", "precio": 25.99, "stock": 30},
+        {"id": 3, "nombre": "Teclado Mecánico", "precio": 75.00, "stock": 12}
+    ]
+}
+
+nombre_archivo = "inventario.json"
+
+try:
+    # Abrimos el archivo en modo escritura ('w') con codificación utf-8
+    with open(nombre_archivo, "w", encoding="utf-8") as archivo:
+        # json.dump() toma los datos de Python y los escribe en el archivo
+        # ensure_ascii=False respeta las tildes y eñes
+        # indent=4 le da formato visual de árbol (legible)
+        json.dump(inventario_tienda, archivo, ensure_ascii=False, indent=4)
+        
+    print(f"¡Archivo '{nombre_archivo}' creado y guardado con éxito!")
+
+except Exception as e:
+    print("Ocurrió un error al crear el archivo:", e)
+
+
+# ---------------------------------------------------------------------
+# PARTE 2: LEER EL ARCHIVO JSON CREADO (Leer y recorrer)
+# ---------------------------------------------------------------------
+print("\n--- 2. Leer un archivo JSON existente ---")
+
+try:
+    # Abrimos el archivo en modo lectura ('r')
+    with open(nombre_archivo, "r", encoding="utf-8") as archivo:
+        # json.load() lee el archivo y lo convierte automáticamente en un diccionario de Python
+        datos_leidos = json.load(archivo)
+    
+    print("¡Archivo leído con éxito!\n")
+    
+    # Accedemos a los datos principales del diccionario
+    print(f"Información de la Tienda: {datos_leidos['tienda']}")
+    print(f"Sucursal: {datos_leidos['sucursal']}")
+    print("Listado de productos disponibles:\n")
+    
+    # Recorremos la lista interna de productos usando un bucle for (como vimos en tu nivel 1)
+    for prod in datos_leidos["productos"]:
+        print(f"- Producto: {prod['nombre']}")
+        print(f"  Precio: ${prod['precio']}")
+        print(f"  Stock disponible: {prod['stock']} unidades\n")
+
+except FileNotFoundError:
+    print(f"Error: No se encontró el archivo '{nombre_archivo}'.")
+except json.JSONDecodeError:
+    print("Error: El archivo no tiene un formato JSON válido.")
+except Exception as e:
+    print("Ocurrió un error inesperado al leer:", e)
+
+# =====================================================================
+# CASO 1: MODIFICAR / AGREGAR DATOS A UN JSON EXISTENTE
+# =====================================================================
+
+import json
+
+nombre_archivo = "inventario.json"
+
+try:
+    # Paso 1: Leemos los datos actuales del archivo
+    with open(nombre_archivo, "r", encoding="utf-8") as archivo:
+        datos = json.load(archivo)
+
+    # Paso 2: Creamos un nuevo producto en formato diccionario
+    nuevo_producto = {
+        "id": 4, 
+        "nombre": "Audífonos Bluetooth", 
+        "precio": 45.00, 
+        "stock": 15
+    }
+
+    # Paso 3: Añadimos el producto a la lista existente dentro del diccionario
+    datos["productos"].append(nuevo_producto)
+
+    # Paso 4: Volvemos a guardar todo el diccionario actualizado en el archivo
+    with open(nombre_archivo, "w", encoding="utf-8") as archivo:
+        json.dump(datos, archivo, ensure_ascii=False, indent=4)
+
+    print("¡Archivo actualizado con éxito! Se añadió un nuevo producto.")
+
+except FileNotFoundError:
+    print("El archivo no existe todavía.")
+
+# =====================================================================
+# CASO 2: FILTRAR INFORMACIÓN DE UN JSON
+# =====================================================================
+
+import json
+
+try:
+    with open("inventario.json", "r", encoding="utf-8") as archivo:
+        datos = json.load(archivo)
+
+    print("--- Productos económicos (Menores a $50) ---")
+    
+    # Usamos un bucle con condición para filtrar
+    for prod in datos["productos"]:
+        if prod["precio"] < 50.00:
+            print(f"- {prod['nombre']} cueta solo ${prod['precio']}")
+
+except Exception as e:
+    print("Error al filtrar los datos:", e)
+
+# =====================================================================
+# CASO 3: BÚSQUEDA SEGURA EN JSON ANIDADOS
+# =====================================================================
+
+import json
+
+# JSON simulado que podría faltarle información
+json_complejo = {
+    "usuario": "Carlos",
+    "configuracion": {
+        "idioma": "es"
+        # Notar que falta la clave "modo_oscuro"
+    }
+}
+
+# Si intentas: modo = json_complejo["configuracion"]["modo_oscuro"] -> ¡Dará error!
+
+# Solución segura usando .get():
+modo_oscuro = json_complejo.get("configuracion", {}).get("modo_oscuro", "No especificado")
+
+print("Modo oscuro configurado:", modo_oscuro)
+# Como no existe, imprimirá "No especificado" en lugar de crashear el programa.
+
+# =====================================================================
+# CASO 4: json.loads() (Texto string plano -> Diccionario de Python)
+# =====================================================================
+
+import json
+
+# Un texto plano que simula venir de un log o mensaje de red
+texto_json_crudo = '{"id_transaccion": 98765, "monto": 150.75, "estado": "completado"}'
+
+# Convertimos el texto plano a un diccionario de Python
+transaccion = json.loads(texto_json_crudo)
+
+print("--- 4. Conversión desde Texto Plano ---")
+print("Tipo de dato original:", type(texto_json_crudo))
+print("Tipo de dato convertido:", type(transaccion))
+print("Monto de la transacción:", transaccion["monto"])
+print("Estado:", transaccion["estado"])
+
+# =====================================================================
+# CASO 5: Guardar y leer una lista de diccionarios
+# =====================================================================
+
+import json
+
+# Una lista con varios usuarios
+lista_usuarios = [
+    {"id": 1, "nombre": "Lucía", "rol": "Admin"},
+    {"id": 2, "nombre": "Mario", "rol": "Editor"},
+    {"id": 3, "nombre": "Elena", "rol": "Invitado"}
+]
+
+archivo_usuarios = "usuarios.json"
+
+# Guardar la lista directamente
+with open(archivo_usuarios, "w", encoding="utf-8") as f:
+    json.dump(lista_usuarios, f, ensure_ascii=False, indent=4)
+
+# Leerla y recorrerla
+with open(archivo_usuarios, "r", encoding="utf-8") as f:
+    usuarios_leidos = json.load(f)
+
+print("\n--- 5. Lista de Usuarios Leída ---")
+for u in usuarios_leidos:
+    print(f"Usuario: {u['nombre']} ({u['rol']})")
+
+# =====================================================================
+# CASO 6: Ordenar y compactar JSON avanzado
+# =====================================================================
+
+import json
+
+datos_desordenados = {"zulu": 1, "alfa": 2, "beta": 3}
+
+# 1. sort_keys=True: Ordena las llaves alfabéticamente (alfa, beta, zulu)
+# 2. separators=(',', ':'): Quita los espacios vacíos después de las comas y dos puntos para comprimir
+json_compacto_ordenado = json.dumps(
+    datos_desordenados, 
+    sort_keys=True, 
+    separators=(',', ':')
+)
+
+print("\n--- 6. JSON Compacto y Ordenado ---")
+print("Resultado sin espacios ni saltos de línea:", json_compacto_ordenado)
+
+import json
+
+archivo_datos = "horarios.json"
+archivo_reporte = "reporte_horario.json"
+
+
+def cargar_datos():
+  "carga los datos guardados de archivo json"
+  try:
+    with open(archivo_datos, "r", encoding="utf-8") as f:
+      return json.load(f)
+  except (json.JSONDecodeError, FileNotFoundError):
+    return []
+
+
+def guardar_datos(horarios):
+  "Guarda los horarios en el archivo Json"
+  with open(archivo_datos, "w", encoding="utf-8") as f:
+    json.dump(horarios, f, indent=4, ensure_ascii=False)
+
+
+def guardar_reporte(reporte):
+  "guarda el reporte en un archivo Json."
+  with open(archivo_reporte, "w", encoding="utf-8") as f:
+    json.dump(reporte, f, indent=4, ensure_ascii=False)
+
+from operaciones import dias_validos
+
+eventos_por_pagina = 5
+
+
+def limpiar_texto(texto):
+  "Convierte a minúsculas, elimina espacios extras y remueve tildes"
+  texto = texto.lower().strip()
+  reemplazos = (("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"))
+  for origen, destino in reemplazos:
+    texto = texto.replace(origen, destino)
+  return texto
+
+
+def horas_a_minutos(hora_str):
+  try:
+    horas, minutos = map(int, hora_str.strip().split(":"))
+    return horas * 60 + minutos
+  except ValueError:
+    return -1
+
+
+def formato_12h(hora_str):
+  "convierte HH:MM (24h) a hh:MM AM/PM"
+  try:
+    horas, minutos = map(int, hora_str.split(":"))
+  except ValueError:
+    return hora_str
+  periodo = "AM" if horas < 12 else "PM"
+  hora_12 = horas % 12
+  if hora_12 == 0:
+    hora_12 = 12
+  return f"{hora_12:02d}:{minutos:02d} {periodo}"
+
+
+def ver_horario_semanal(horarios, estudiante):
+  "Muestra el horario semanal de un estudiante en formato de tabla"
+  # (Filtra materias, organiza horas y dibuja la tabla en consola)
+  ...
+
+
+def mostrar_reporte_paginado(reporte):
+  "Muestra el reporte del horario en consola, pidiendo ENTER cada 5 eventos"
+  # (Controla la paginación para no saturar la pantalla)
+  ...
+
+from almacenamiento import cargar_datos
+from interfaz import ver_horario_semanal, mostrar_reporte_paginado
+from operaciones import (
+    registrar_materia,
+    modificar_materia,
+    eliminar_materia,
+    generar_reporte,
+)
+
+
+def menu():
+  horarios = cargar_datos()
+
+  while True:
+    # Muestra las opciones 1 a 6 en pantalla
+    print("\n--- MENÚ ---")
+    opcion = input("Seleccione una opcion: ").strip()
+
+    if opcion == "1":
+      # Pide datos por consola y llama a registrar_materia()
+      ...
+    elif opcion == "2":
+      # Pide nombre y muestra la tabla semanal
+      ...
+    elif opcion == "3":
+      # Modifica una materia existente
+      ...
+    elif opcion == "4":
+      # Elimina una materia
+      ...
+    elif opcion == "5":
+      # Genera y muestra el reporte paginado
+      ...
+    elif opcion == "6":
+      print("Saliendo...")
+      break
+
+
+if __name__ == "__main__":
+  menu()
+
+import json
+from almacenamiento import guardar_datos, guardar_reporte
+
+dias_validos = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]
+
+
+def dia_valido(dia):
+  "revisa que el dia este dentro de lunes a viernes"
+  ...
+
+
+def hay_conflicto(
+    horarios, estudiante, dia, hora_inicio, hora_fin, materia_actual=None
+):
+  "Verifica si hay cruce de horas con otra materia ya registrada"
+  ...
+
+
+def registrar_materia(
+    horarios, estudiante, materia, dia, hora_inicio, hora_fin, ubicacion
+):
+  "Valida conflictos y añade la nueva materia a la lista"
+  ...
+
+
+def modificar_materia(
+    horarios,
+    estudiante,
+    materia_actual,
+    nueva_materia,
+    nuevo_dia,
+    nueva_hora_inicio,
+    nueva_hora_fin,
+    nueva_ubicacion,
+):
+  "Busca una materia y actualiza sus datos"
+  ...
+
+
+def eliminar_materia(horarios, estudiante, materia):
+  "Elimina una materia específica de la lista"
+  ...
+
+
+def generar_reporte(horarios, estudiante=None):
+  "Ordena todos los eventos cronológicamente por día y hora"
+  ...
+
+dias_validos = [
+    "Lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sabado",
+]
+
+nuevo_evento = {
+    "estudiante": estudiante,
+    "materia": materia,
+    "profesor": profesor,  # <--- Nuevo campo agregado
+    "dia": dia.capitalize(),
+    # ... demás datos
+}
+
+#1. Hacer un respaldo automático (Backup) del JSON
+#Ideal para evitar perder información si el archivo principal se corrompe. Copia horarios.json a un archivo de seguridad.
+
+import shutil
+
+def hacer_backup():
+  try:
+    shutil.copy("horarios.json", "backup_horarios.json")
+    print("¡Respaldo creado con éxito!")
+  except FileNotFoundError:
+    print("No hay archivo para respaldar todavía.")
+
+#2. Buscar materias por profesor
+#Si agregaste el campo "profesor" a tu JSON, esta función te permite filtrar todas las clases impartidas por un docente específico.
+
+def buscar_por_profesor(horarios, nombre_profesor):
+  encontradas = [
+      e
+      for e in horarios
+      if e.get("profesor", "").lower() == nombre_profesor.lower()
+  ]
+  return encontradas
+
+#3. Calcular las horas totales de clase a la semana
+#Suma cuántas horas pasa un estudiante en clase calculando la diferencia entre la hora de inicio y de fin.
+
+def calcular_horas_totales(horarios, estudiante):
+  total_minutos = 0
+  for e in horarios:
+    if e.get("estudiante", "").lower() == estudiante.lower():
+      # Usando tu función horas_a_minutos previa
+      inicio = horas_a_minutos(e["hora_inicio"])
+      fin = horas_a_minutos(e["hora_fin"])
+      if inicio != -1 and fin != -1:
+        total_minutos += fin - inicio
+  return total_minutos / 60  # Devuelve las horas en formato decimal
+
+#4. Exportar los datos de JSON a un archivo CSV (Excel)
+#Convierte tu archivo JSON en un archivo .csv para que pueda abrirse directamente en Microsoft Excel o Google Sheets.
+
+import csv
+import json
+
+
+def json_a_csv():
+  with open("horarios.json", "r", encoding="utf-8") as f:
+    datos = json.load(f)
+
+  with open("horarios.csv", "w", newline="", encoding="utf-8") as f:
+    escritor = csv.writer(f)
+    # Escribir encabezados
+    escritor.writerow(
+        ["Estudiante", "Materia", "Día", "Inicio", "Fin", "Ubicación"]
+    )
+    # Escribir filas
+    for e in datos:
+      escritor.writerow([
+          e.get("estudiante"),
+          e.get("materia"),
+          e.get("dia"),
+          e.get("hora_inicio"),
+          e.get("hora_fin"),
+          e.get("ubicacion"),
+      ])
+  print("¡Exportado a CSV con éxito!")
+
+#5. Validar si el archivo JSON está vacío antes de leerlo
+#Evita que Python intente procesar un archivo JSON que esté completamente en blanco.
+
+import os
+
+
+def archivo_esta_vacio(nombre_archivo):
+  if not os.path.exists(nombre_archivo):
+    return True
+  return os.path.getsize(nombre_archivo) == 0
+
+#6. Ordenar las materias del JSON alfabéticamente por nombre
+#Reorganiza todo tu archivo JSON para que las materias queden ordenadas de la A a la Z.
+
+import json
+
+
+def ordenar_json_alfabeticamente():
+  with open("horarios.json", "r", encoding="utf-8") as f:
+    horarios = json.load(f)
+
+  # Ordenar por nombre de materia
+  horarios_ordenados = sorted(horarios, key=lambda x: x["materia"])
+
+  with open("horarios.json", "w", encoding="utf-8") as f:
+    json.dump(horarios_ordenados, f, indent=4, ensure_ascii=False)
+  print("¡JSON ordenado alfabéticamente!")
+
+#7. Eliminar a un estudiante completo de una sola vez
+#Borra todas las materias asociadas a un estudiante específico del archivo JSON de golpe.
+
+def eliminar_estudiante_completo(estudiante):
+  with open("horarios.json", "r", encoding="utf-8") as f:
+    horarios = json.load(f)
+
+  # Filtrar para dejar solo los que NO sean de ese estudiante
+  nuevos_horarios = [
+      e
+      for e in horarios
+      if e.get("estudiante", "").lower() != estudiante.lower()
+  ]
+
+  with open("horarios.json", "w", encoding="utf-8") as f:
+    json.dump(nuevos_horarios, f, indent=4, ensure_ascii=False)
+  print(f"Estudiante {estudiante} y todas sus materias fueron eliminados.")
+
+#8. Comprimir el JSON en una sola línea (Minificar)
+#Elimina todos los espacios y saltos de línea para que el archivo JSON ocupe el mínimo espacio posible en disco.
+
+import json
+
+def comprimir_json():
+  with open("horarios.json", "r", encoding="utf-8") as f:
+    datos = json.load(f)
+
+  # Guardar sin espacios ni indentación
+  with open("horarios_minimo.json", "w", encoding="utf-8") as f:
+    json.dump(datos, f, separators=(",", ":"), ensure_ascii=False)
+  print("¡Archivo JSON comprimido creado!")
+
+#9. Buscar materias por ubicación o salón
+#Filtra rápidamente qué clases se dictan en un salón o edificio en específico.
+
+def buscar_por_ubicacion(horarios, lugar):
+  return [
+      e
+      for e in horarios
+      if lugar.lower() in e.get("ubicacion", "").lower()
+  ]
+
+import json
+
+#10. Estadísticas rápidas del sistema
+#Genera un resumen rápido con el número total de registros, cuántos estudiantes únicos hay y cuántas materias se han guardado.
+
+def mostrar_estadisticas():
+  with open("horarios.json", "r", encoding="utf-8") as f:
+    horarios = json.load(f)
+
+  total_eventos = len(horarios)
+  estudiantes_unicos = len(set(e.get("estudiante") for e in horarios))
+
+  print(f"\n--- ESTADÍSTICAS DEL SISTEMA ---")
+  print(f"Total de actividades registradas: {total_eventos}")
+  print(f"Estudiantes en el sistema: {estudiantes_unicos}")

@@ -1,0 +1,22 @@
+# Para agregar en operaciones.py
+
+def eliminar_estudiante_completo(horarios, estudiante):
+    "Elimina todos los registros asociados a un estudiante"
+    nuevos_horarios = []
+    eliminados = 0
+    
+    for evento in horarios:
+        if evento.get("estudiante", "").lower() == estudiante.lower():
+            eliminados += 1
+        else:
+            nuevos_horarios.append(evento)
+            
+    if eliminados == 0:
+        return False, f"No se encontraron registros para el estudiante '{estudiante}'."
+        
+    # Actualizamos la lista original y guardamos
+    horarios.clear()
+    horarios.extend(nuevos_horarios)
+    guardar_datos(horarios)
+    
+    return True, f"Se eliminaron {eliminados} registros del estudiante '{estudiante}' correctamente."
