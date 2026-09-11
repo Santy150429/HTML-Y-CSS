@@ -1,0 +1,14 @@
+{
+    "Lunes": [],
+    "Martes": [],
+    "Miercoles": [],
+    "Jueves": [
+        {
+            "materia": "ciencias",
+            "hora_inicio": "10:00",
+            "hora_fin": "12:00",
+            "ubicacion": "702"
+        }
+    ],
+    "Viernes": []
+}

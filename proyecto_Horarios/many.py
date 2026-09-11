@@ -1,9 +1,8 @@
-
 # Archivo principal del programa
 
 from almacenamiento import cargar_datos
 from interfaz import ver_horario_semanal, mostrar_reporte_paginado, mostrar_calendario
-from operaciones import registrar_materia, modificar_materia, eliminar_materia, generar_reporte,generar_calendario 
+from operaciones import registrar_materia, modificar_materia, eliminar_materia, generar_reporte, exportar_calendario
 
 
 def menu():
@@ -18,7 +17,7 @@ def menu():
         print("3. Modificar una materia o actividad")
         print("4. Eliminar una materia o actividad")
         print("5. Generar reporte del horario")
-        print("6. Generar calendario")
+        print("6. Exportar calendario (JSON por dia)")
         print("7. Salir")
         print("=" * 42)
 
@@ -75,14 +74,13 @@ def menu():
             mostrar_reporte_paginado(reporte)
 
         elif opcion == "6":
-            print("\n--- calendario ---")
-            estudiante = input("Nombre del estudiante (ENTER par reporte de todos): ").strip()
+            print("\n--- Exportar calendario ---")
+            estudiante = input("Nombre del estudiante (ENTER para todos): ").strip()
             estudiante = estudiante if estudiante else None
 
-            exito, msj, calendario = generar_calendario(horarios, estudiante)
+            exito, msj, calendario = exportar_calendario(horarios, estudiante)
             mostrar_calendario(calendario)
-
-
+            print("\n" + msj)
 
         elif opcion == "7":
             print("\nChao, saliendo del programa...")

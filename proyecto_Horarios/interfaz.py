@@ -1,4 +1,3 @@
-
 # Este archivo se encarga de mostrar la informacion en consola
 
 from operaciones import dias_validos
@@ -100,12 +99,31 @@ def mostrar_reporte_paginado(reporte):
 
         print("-" * 42)
 
-def mostrar_calemdario(calendario):
-    "Muestra el calendario en consola, pidiendo ENTER cada cierto numero de eventos"
 
-    if not reporte:
-        print("\n" + "=" * 42)
-        print("CALENDARIO DE LA SEMANA")
-        print("=" * 42) 
+def mostrar_calendario(calendario):
+    "Muestra el calendario exportado en consola, paginado 1 dia por pantalla"
 
-    print("\nReporte tambien guardado en 'reporte_horario.json'.")
+    if not calendario:
+        print("\nNo hay datos para mostrar en el calendario.")
+        return
+
+    print("\n" + "=" * 42)
+    print("CALENDARIO EXPORTADO (POR DIA)")
+    print("=" * 42)
+
+    dias = list(calendario.keys())
+    for i, dia in enumerate(dias):
+        print(f"\n{dia}:")
+
+        eventos = calendario[dia]
+        if not eventos:
+            print("  (Sin eventos)")
+        else:
+            for evento in eventos:
+                ubicacion = evento["ubicacion"] if evento["ubicacion"] else "Sin ubicacion"
+                print(f"  - {evento['materia']} ({evento['hora_inicio']} - {evento['hora_fin']}) en {ubicacion}")
+
+        if i < len(dias) - 1:
+            input("\nPresione ENTER para ver el siguiente dia...")
+
+    print("\nCalendario tambien guardado en 'data/reportes/reporte_calendario.json'.")
