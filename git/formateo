@@ -1,6 +1,0 @@
-numero_a=5
-numero_b=10
-#print(numero_a)
-#print(numero_b)
-
-print(f"Los numeros impresos con {numero_a} y {numero_b}")
