@@ -1,0 +1,46 @@
+
+:root{
+    --color-texto:gray;
+}
+
+div {
+    background-color: blue
+}
+
+#section{
+    color: orange;
+}
+
+.container {
+    background-color: aqua;
+    color: red;
+    border: 1px solid green;
+}
+
+h4{
+    color: rgb(234,78,24);
+}
+
+#titulo4{
+    color: aliceblue;
+}
+
+.boton{
+    color: black;
+}
+
+.caja{
+    background-color: var(--color-texto)
+}
+
+.portada{
+    height: 2000px;
+
+    background-image: url(../Imagenes/908d692dc3b6ff9592c83ad1c5af879b.jpg);
+    background-repeat: no-repeat;
+}
+
+/*.portada{
+    height: 400px;
+    background: radial-gradient(blue,red);
+}*/
