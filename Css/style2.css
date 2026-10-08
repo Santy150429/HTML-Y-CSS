@@ -1,0 +1,11 @@
+.primero + span{
+    background: gold;
+}
+
+div#page div{
+    background-color: lightblue;
+}
+
+div#page > div{
+    border: 2px solid red;
+}
