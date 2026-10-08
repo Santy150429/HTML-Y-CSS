@@ -9,3 +9,7 @@ div#page div{
 div#page > div{
     border: 2px solid red;
 }
+
+div#page:first child{
+    background-color: green;
+}

@@ -1,0 +1,60 @@
+
+a:hover{
+    color: red;
+    font-size: 25px;
+}
+
+a:active{
+    color: orange;
+    font-size: 27px;
+}
+
+#google:visited{
+    color: darkviolet;
+}
+
+a:link{
+    color: red;
+}
+
+div#page:first child{
+    background-color: green;
+}
+
+div#page :first-child{
+    background-color: green;
+}
+
+#page > :last-child{
+    background-color: yellow;
+}
+
+ul li:nth-child(n){
+    background-color: yellow;
+}
+
+ul li:nth-child(2n){
+    background-color: lightblue;
+}
+
+@media(max-width: 600px){
+    body{
+        background-color: lightseagreen;
+    }
+}
+
+@keyframes mover {
+    from{
+        transform: translatex(0);
+    }
+    to {
+        transform: translatex(200px)
+    }
+}
+
+-box {
+    width: 100px;
+    height: 100px;
+    background: red;
+    animation: mover 2s infinite alternate linear;
+}
